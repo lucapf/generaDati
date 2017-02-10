@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Properties;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -28,7 +29,7 @@ public class Table {
     private static final int POSITION_ORDER = 0;
     private static final int POSITION_TYPE = 1;
     private static final int POSITION_PROVIDER_AND_PARAMETERS = 2;
-
+    private Logger logger = Logger.getLogger(getClass());
     public Table(String nomeTabella, String repeaterKey) {
         this.nomeTabella = nomeTabella;
         this.repeaterKey = repeaterKey;
@@ -75,7 +76,15 @@ public class Table {
     public void setColonne(List<Colonna> colonne) {
         this.colonne = colonne;
     }
-
+    public String getColumnValueByIndex(int i)throws Exception {
+        if (colonne.size()==0) return "";
+        logger.debug(String.format("accesso colonna index %d di $d",i,getColonne().size()));
+        return getColonne().get(i).getGenerator().get();
+    }
+    public Integer getIntValueByIndex(int i)throws Exception {
+        String retValueString=getColumnValueByIndex(i);
+        return retValueString.equals("")?null:Integer.valueOf(retValueString);
+    }
     Table getNumberOfRecords(String[] components, String key, Properties prop) throws ValidationException {
         if (components.length == 4
                 && components[0].equalsIgnoreCase("table")

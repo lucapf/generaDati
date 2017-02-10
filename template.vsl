@@ -1,5 +1,19 @@
 ## Velocity Template.
-#foreach( $table in  $p.tableCollection())
-#foreach($i in [0..$table.numeroElementi] )#foreach ($column in $table.colonne)$column.generator.get();#end
+#set($table=$p.findByName("setCF"))
+#foreach($i in [0..$table.numeroElementi] )
 
-#end#end
+{"oggetto1" : {
+    "title" : "$table.getColumnValueByIndex(0)",
+     [  
+      #set($index=$table.getIntValueByIndex(1))
+      #foreach($i in [0..$index])
+        "PF" : "$table.getColumnValueByIndex(0)" #if ($i<$index) , #end
+
+       #end  
+
+    ]
+  }
+}
+
+
+#end
