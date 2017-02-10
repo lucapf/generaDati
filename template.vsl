@@ -1,0 +1,5 @@
+## Velocity Template.
+#foreach( $table in  $p.tableCollection())
+#foreach($i in [0..$table.numeroElementi] )#foreach ($column in $table.colonne)$column.generator.get();#end
+
+#end#end
