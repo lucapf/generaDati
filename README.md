@@ -20,12 +20,19 @@ tutte le informazioni per la generazione del tracciato sono contenute all'intern
 * `template.name=template.vsl` : indica il nome del template velocity utilizzato (in questo caso template.vsl si riferisce ad un file csv)
 *  `table.setCF.numero.record=1000000` : indica il numero di record da generare
 *  `table.setCF.TIPO_SOGGETTO=1;STRING;FIXED@Persona Fisica` : 
+
     ** `table.setCF` : nome tabella
-	** `TIPO_SOGGETTO` : tipo soggetto 
+	
+	** `TIPO_SOGGETTO` : nome colonna
+	
 	** `1` : ordinale 
+	
 	** `STRING` : tipo di dato  
+	
 	** `FIXED`  : valore fisso 
+	
     ** `@....`  : valore restituito
+	
 
 
 
